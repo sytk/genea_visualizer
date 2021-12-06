@@ -4,7 +4,6 @@
 # and is released under the GPLv3 License. Please see the LICENSE
 # file that should have been included as part of this package.
 
-
 import requests
 from pathlib import Path
 import time
@@ -38,14 +37,14 @@ while not done:
     resp.raise_for_status()
 
     response = resp.json()
-    
+
     if response["state"] == "PENDING":
         jobs_in_queue = response["result"]["jobs_in_queue"]
         print(f"pending.. {jobs_in_queue} jobs currently in queue")
-    
+
     elif response["state"] == "PROCESSING":
         print("Processing the file (this can take a while depending on file size)")
-    
+
     elif response["state"] == "RENDERING":
         current = response["result"]["current"]
         total = response["result"]["total"]
